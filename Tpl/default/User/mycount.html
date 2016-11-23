@@ -1,0 +1,54 @@
+<include file="Index:header" />
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+
+<if condition="$serach neq '1'">
+<style>
+#features{display:none;}    
+</style>
+</if>
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);" class="arrow transition02" ></a>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+                <div class="row comment">
+				<div class="span12">
+				<if condition="$locations eq 1">
+				<volist name="result" id="vo" >
+				  <div class="content clearfix">
+					<a href="{:U('User/getmycount',array('id'=>$vo['id']))}" target="_black"><h2>{$vo.title}&nbsp;&nbsp;---&nbsp;&nbsp;{$vo.name}</h2></a>
+				  </div>
+				</volist>  
+				 </if>
+				 
+				 <if condition="$locations eq 2">
+				<volist name="result" id="vo" >
+				  <div class="content clearfix">
+					<a href="{:U('Index/getNameInfo',array('item'=>$vo['title']))}" target="_black"><h2>{$vo.title}&nbsp;&nbsp;&nbsp;&nbsp;({$vo.name})</h2></a>
+				  </div>
+				</volist>  
+				 </if>
+				</div>
+			    </div>
+                <h2 style="text-align:center;">{$content['title']} </h2>
+			    <pre>{$content['content']|change}</pre>
+			   <if condition="$ref eq 1">
+			   <h2 style="text-align:center;">暂时未找到该曲谱，请尝试稍后刷新网页... </h2>
+			   </if>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <include file="Index:footer" />

@@ -1,0 +1,76 @@
+<include file="Index:header" />
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+
+<if condition="$serach neq '1'">
+<style>
+#features{display:none;}    
+</style>
+</if>
+<style>
+.sizep{float: right;margin: 25px 4px;color:#eeecd5;text-decoration:none;}
+.sizep:hover{color:#eeecd5;text-decoration:none;}
+</style>
+<script>
+function big(){
+	var size=$('pre').css('font-size').replace("px", "");
+	var Lheight=$('pre').css('line-height').replace("px", "");
+	$('pre').css('font-size',parseInt(size)+2+'px');
+	$('pre').css('line-height',parseInt(Lheight)+1.5+'px');
+}
+function smail(){
+	var size=$('pre').css('font-size').replace("px", "");
+	var Lheight=$('pre').css('line-height').replace("px", "");
+	$('pre').css('font-size',parseInt(size)-2+'px');
+	$('pre').css('line-height',parseInt(Lheight)-1+'px');
+}
+</script>
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);" class="arrow transition02" ></a>
+              <if condition='$content.content neq "" '>
+              <a onclick='smail()' class='sizep'  >字体缩小</a>
+              <a onclick='big()' class='sizep' >字体放大</a>
+              </if>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+                <div class="row comment">
+				<div class="span12">
+				<if condition="$locations eq 1">
+				<volist name="result" id="vo" >
+				  <div class="content clearfix">
+					<a href="{:U('Index/getcontent',array('id'=>$vo['id']))}" target="_black"><h2>{$vo.title}&nbsp;&nbsp;---&nbsp;&nbsp;{$vo.name}</h2></a>
+				  </div>
+				</volist>  
+				 </if>
+				 
+				 <if condition="$locations eq 2">
+				<volist name="result" id="vo" >
+				  <div class="content clearfix">
+					<a href="{:U('Index/getNameInfo',array('item'=>$vo['title']))}" target="_black"><h2>{$vo.title}&nbsp;&nbsp;&nbsp;&nbsp;({$vo.name})</h2></a>
+				  </div>
+				</volist>  
+				 </if>
+				</div>
+			    </div>
+                <h2 style="text-align:center;">{$content['title']} </h2>
+			    <pre>{$content['content']|change}</pre>
+			   <if condition="$ref eq 1">
+			   <h2 style="text-align:center;">暂时未找到该曲谱，请尝试稍后刷新网页... </h2>
+			   </if>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <include file="Index:footer" />

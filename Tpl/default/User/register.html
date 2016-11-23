@@ -1,0 +1,51 @@
+<include file="Index:header" />
+ <script>
+	$(document).ready(function(){
+		  $("#dosubmits").click(function(){
+			  var title=$("#inputtitle").val();
+			  var name=$("#inputname").val();
+			  var email=$("#email").val();
+			  if(title=="请输入用户名"){
+				  alert("请输入用户名！");
+			  }else if(name=="请输入密码"){
+				  alert("请输入密码！");
+			  }else if(email=="请输入邮箱"){
+				  alert("请输入邮箱！");
+			  }else{
+				  $("#insertform").submit();
+			  }
+		  });
+		});
+  
+  </script>
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);" class="arrow transition02"></a>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+              <form action="{:U("User/doregister")}" method="post" id="insertform" >
+              <div style="margin-left:28%;">
+                 <input name="username" id="inputtitle" class="inputtext" onfocus="if(this.value=='请输入用户名'){this.value=''};" onblur="if(this.value==''){this.value='请输入用户名'};"  value="请输入用户名" style="margin-left:100px;"><br/>
+                 <input name="password" id="inputname" type="password" class="inputtext" onfocus="if(this.value=='请输入密码'){this.value=''};" onblur="if(this.value==''){this.value='请输入密码'};"  value="请输入密码" style="margin-left:100px;"><br/>
+                 <input name="email" id="email" class="inputtext" onfocus="if(this.value=='请输入邮箱'){this.value=''};" onblur="if(this.value==''){this.value='请输入邮箱'};"  value="请输入邮箱" style="margin-left:100px;"><br/>
+                 <a href="#" class="button custom-nav transition  button-dark" id="dosubmits" style="margin-left:100px;">确认注册^_^</a>
+              </div>
+              </form>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <include file="Index:footer" />

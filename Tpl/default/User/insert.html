@@ -1,0 +1,51 @@
+<include file="Index:header" />
+ <script>
+	$(document).ready(function(){
+		  $("#dosubmits").click(function(){
+			  var title=$("#inputtitle").val();
+			  var name=$("#inputname").val();
+			  var contant=$("#inputcon").val();
+			  if(title=="请输入曲谱名称"){
+				  alert("请输入曲谱名称！");
+			  }else if(name=="请输入作者名称"){
+				  alert("请输入作者名称！");
+			  }else if(!contant){
+				  alert("请输入曲谱内容！");
+			  }else{
+				  $("#insertform").submit();
+			  }
+		  });
+		});
+  
+  </script>
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);" class="arrow transition02"></a>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+              <form action="{:U("User/doInsert")}" method="post" id="insertform" >
+              <div style="margin-left:28%;">
+                 <input name="title" id="inputtitle" class="inputtext" onfocus="if(this.value=='请输入曲谱名称'){this.value=''};" onblur="if(this.value==''){this.value='请输入曲谱名称'};"  value="请输入曲谱名称" style="width:60%;padding-left:15px;"><br/>
+                 <input name="name" id="inputname" class="inputtext" onfocus="if(this.value=='请输入作者名称'){this.value=''};" onblur="if(this.value==''){this.value='请输入作者名称'};"  value="请输入作者名称" style="margin-left:100px;">
+                 <a href="#" class="button custom-nav transition  button-dark" id="dosubmits" style="margin-left:100px;">确定提交^_^</a>
+              </div>
+                 <textarea name="contant" id="inputcon" class="inputtext" style="width: 95%; height: 469px;"></textarea>
+              </form>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <include file="Index:footer" />

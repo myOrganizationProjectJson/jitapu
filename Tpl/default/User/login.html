@@ -1,0 +1,49 @@
+<include file="Index:header" />
+ <script>
+	$(document).ready(function(){
+		  $("#dosubmits").click(function(){
+			  var title=$("#inputtitle").val();
+			  var name=$("#inputname").val();
+			  var contant=$("#inputcon").val();
+			  if(title=="请输入用户名"){
+				  alert("请输入用户名！");
+			  }else if(name=="请输入密码"){
+				  alert("请输入密码！");
+			  }else{
+				  $("#insertform").submit();
+			  }
+		  });
+		});
+  
+  </script>
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);" class="arrow transition02"></a>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+              <form action="{:U("User/dologin")}" method="post" id="insertform" >
+              <div style="margin-left:28%;">
+                 <input name="username" id="inputtitle" class="inputtext" onfocus="if(this.value=='请输入用户名'){this.value=''};" onblur="if(this.value==''){this.value='请输入用户名'};"  value="请输入用户名" style="margin-left:100px;"><br/>
+                 <input name="password" id="inputname" type="password" class="inputtext" onfocus="if(this.value=='请输入密码'){this.value=''};" onblur="if(this.value==''){this.value='请输入密码'};"  value="请输入密码" style="margin-left:100px;">
+                 <a href="#" class="button custom-nav transition  button-dark" id="dosubmits" style="margin-left:60px;">确认登陆^_^</a>
+                 <a href="{:U('User/register')}" style="color:#fff;">立即注册</a>
+              </div>
+              </form>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <include file="Index:footer" />

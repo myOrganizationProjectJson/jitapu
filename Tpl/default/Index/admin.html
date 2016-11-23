@@ -1,0 +1,149 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6 no-js" lang="en"> <style>pre{background-color: #333333 !important;}</style><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8 no-js" lang="en"> <style>pre{background-color: #333333 !important;}</style><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9 no-js" lang="en"> <style>pre{background-color: #333333 !important;}</style><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>纯TXT吉他谱网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="__ROOT__/Tpl/default/Public/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="__ROOT__/Tpl/default/Public/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="__ROOT__/Tpl/default/Public/assets/css/style.css">
+    <link rel="stylesheet" id="styleselector_css" href="">
+    <script type="text/javascript" src="__ROOT__/Tpl/default/Public/jquery.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="140">
+  <script>
+  
+	$(document).ready(function(){
+		  $("#sougq").click(function(){
+			  $("#location").val("1");
+			  $("#searchpost").submit();
+		  });
+		});
+  
+  </script>
+    <!-- BEGIN Parallax -->
+    <div id="parallax1"></div>
+    <div id="parallax2"></div>
+    <!-- END Parallax -->
+    <!-- BEGIN Navigationbar -->
+    <div id="navbar" class="navbar navbar-fixed-top" style="z-index:-100">
+      <div class="container">
+        <div class="navbar-inner clearfix">
+          <div class="navbar-background"></div>
+          <div id="brand" class="brand">
+            <div id="brand-inner" class="clearfix">
+              <h1><a href="#home">Jitapu</a></h1>
+              <h2>The<br>txt<br>Jitapu</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<style>
+#inputtext{    font-size: 20px;
+  font-weight: bold;
+  font-family: Daniel;
+  color: #EEECD5;
+  background:repeat scroll 0 -16px transparent;
+    width: 40%;
+  height: 30px;
+  margin-bottom: 10px;
+  text-align:center;
+  }
+</style>
+    <div id="home">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h1 class="big-head">TXT <br/>吉他谱</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12">
+            <div class="ribbon">
+             欢迎来到纯文本 <span>吉他谱</span> 网站
+              <span class="shape-left"></span>
+              <span class="shape-right"></span>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <div class="row">
+          <div class="span12" style="text-align: center;">
+            <form action="{:U("Index/index")}" method="post" id="searchpost">
+            <div class="content-no-vert">
+              <input name="keyword" id="inputtext" onfocus="if(this.value=='请输入您要搜索的关键字'){this.value=''};" onblur="if(this.value==''){this.value='请输入您要搜索的关键字'};"  value=<if condition="$post['keyword'] eq '' ">'请输入您要搜索的关键字' <else/>'{$post['keyword']}' </if>>
+            </div>
+            <input type="hidden" value="1" name="isref" />
+            <input type="hidden" value="" name="location" id="location"/>
+            <a href="#" class="button custom-nav transition  button-dark" id="sougs">搜索歌手^_^</a>
+            <span class="pacifico">&</span>
+            <a href="#" class="button custom-nav transition" id="sougq">搜索歌曲^_^</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END Home -->
+    <!-- BEGIN Features -->
+
+<if condition="$serach neq '1'">
+<style>
+#features{display:none;}    
+</style>
+</if>
+    <section id="features">
+      <div class="container">
+        <div class="row head">
+          <div class="span12">
+            <div class="content clearfix">
+              <h1>The Song Info</h1>
+              <a href="javascript:history.go(-1);"  class="arrow transition02"></a>
+            </div>
+          </div>
+        </div>
+        <div class="box-content">
+          <div class="row">
+            <div class="span12">
+              <div class="content">
+                <div class="row comment">
+				<div class="span12">
+				<volist name="result" id="vo" >
+				  <div class="content clearfix">
+					<a href="{:U('Index/getcontent',array('id'=>$vo['id']))}" target="_black"><h2>{$vo.title}&nbsp;&nbsp;---&nbsp;&nbsp;{$vo.name}</h2></a>
+				  </div>
+				</volist>  
+				</div>
+			    </div>
+                <h2 style="text-align:center;">{$content['title']} </h2>
+			    <pre>{$content['content']|change}</pre>
+			   <if condition="$ref eq 1">
+			   <h2 style="text-align:center;">暂时未找到该曲谱，请尝试稍后刷新网页... </h2>
+			   </if>
+			 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <div class="ribbon">
+              TXT JITAPU© 2011-2015 <span>www.txtjitapu.com</span> FOR TXTJITAPU Collect from <a href="index" title="txtjitapu" target="_blank">TXTJITAPU</a>
+              <span class="shape-left"></span>
+              <span class="shape-right"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+  </body>
+</html>
